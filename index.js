@@ -27,9 +27,9 @@ app.post("/emi/create", async (req, res) => {
   let { loan, interest, tenure } = req.body;
   console.log(req.body)
   // EMI:E = P x r x ( 1 + r )n / ( ( 1 + r )n - 1 )
-  interest = (interest/12/100)
+  interest = (interest/12/100).toFixed(5)
   const EMI =
-    ((loan * interest * ((1 + interest)** tenure)) / ((1 + interest) ** (tenure - 1))).toFixed(2);
+    ((loan * interest * ((1 + interest)**tenure)) / ((1 + interest) **tenure - 1))
   const totalpay = EMI * tenure;
   const intamount = EMI * tenure - loan;
 
